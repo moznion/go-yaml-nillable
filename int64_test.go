@@ -28,5 +28,5 @@ func TestInt64(t *testing.T) {
 	var got Int64
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Int64{val: given, isAssigned: true}, got)
+	assert.Equal(t, Int64{Val: given, IsAssigned: true}, got)
 }

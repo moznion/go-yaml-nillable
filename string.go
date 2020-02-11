@@ -4,20 +4,20 @@ package yamlnillable
 
 // String is a data type for nillable string value for YAML marshaling/unmarshaling.
 type String struct {
-	val        string
-	isAssigned bool
+	Val        string
+	IsAssigned bool
 }
 
 // StringOf makes a non-nil value with given string.
 func StringOf(val string) *String {
-	return &String{val: val, isAssigned: true}
+	return &String{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals String as YAML.
 // This method used on marshaling YAML internally.
 func (v *String) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *String) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

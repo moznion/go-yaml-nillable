@@ -4,20 +4,20 @@ package yamlnillable
 
 // Int is a data type for nillable int value for YAML marshaling/unmarshaling.
 type Int struct {
-	val        int
-	isAssigned bool
+	Val        int
+	IsAssigned bool
 }
 
 // IntOf makes a non-nil value with given int.
 func IntOf(val int) *Int {
-	return &Int{val: val, isAssigned: true}
+	return &Int{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Int as YAML.
 // This method used on marshaling YAML internally.
 func (v *Int) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Int) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

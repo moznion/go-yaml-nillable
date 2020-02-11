@@ -4,20 +4,20 @@ package yamlnillable
 
 // Bool is a data type for nillable bool value for YAML marshaling/unmarshaling.
 type Bool struct {
-	val        bool
-	isAssigned bool
+	Val        bool
+	IsAssigned bool
 }
 
 // BoolOf makes a non-nil value with given bool.
 func BoolOf(val bool) *Bool {
-	return &Bool{val: val, isAssigned: true}
+	return &Bool{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Bool as YAML.
 // This method used on marshaling YAML internally.
 func (v *Bool) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Bool) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

@@ -28,5 +28,5 @@ func TestBool(t *testing.T) {
 	var got Bool
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Bool{val: given, isAssigned: true}, got)
+	assert.Equal(t, Bool{Val: given, IsAssigned: true}, got)
 }

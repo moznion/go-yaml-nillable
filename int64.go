@@ -4,20 +4,20 @@ package yamlnillable
 
 // Int64 is a data type for nillable int64 value for YAML marshaling/unmarshaling.
 type Int64 struct {
-	val        int64
-	isAssigned bool
+	Val        int64
+	IsAssigned bool
 }
 
 // Int64Of makes a non-nil value with given int64.
 func Int64Of(val int64) *Int64 {
-	return &Int64{val: val, isAssigned: true}
+	return &Int64{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Int64 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Int64) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Int64) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

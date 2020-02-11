@@ -4,20 +4,20 @@ package yamlnillable
 
 // Uint8 is a data type for nillable uint8 value for YAML marshaling/unmarshaling.
 type Uint8 struct {
-	val        uint8
-	isAssigned bool
+	Val        uint8
+	IsAssigned bool
 }
 
 // Uint8Of makes a non-nil value with given uint8.
 func Uint8Of(val uint8) *Uint8 {
-	return &Uint8{val: val, isAssigned: true}
+	return &Uint8{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Uint8 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Uint8) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Uint8) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

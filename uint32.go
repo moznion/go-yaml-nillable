@@ -4,20 +4,20 @@ package yamlnillable
 
 // Uint32 is a data type for nillable uint32 value for YAML marshaling/unmarshaling.
 type Uint32 struct {
-	val        uint32
-	isAssigned bool
+	Val        uint32
+	IsAssigned bool
 }
 
 // Uint32Of makes a non-nil value with given uint32.
 func Uint32Of(val uint32) *Uint32 {
-	return &Uint32{val: val, isAssigned: true}
+	return &Uint32{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Uint32 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Uint32) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Uint32) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

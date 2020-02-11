@@ -4,20 +4,20 @@ package yamlnillable
 
 // Float32 is a data type for nillable float32 value for YAML marshaling/unmarshaling.
 type Float32 struct {
-	val        float32
-	isAssigned bool
+	Val        float32
+	IsAssigned bool
 }
 
 // Float32Of makes a non-nil value with given float32.
 func Float32Of(val float32) *Float32 {
-	return &Float32{val: val, isAssigned: true}
+	return &Float32{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Float32 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Float32) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Float32) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

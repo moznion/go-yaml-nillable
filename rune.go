@@ -4,20 +4,20 @@ package yamlnillable
 
 // Rune is a data type for nillable rune value for YAML marshaling/unmarshaling.
 type Rune struct {
-	val        rune
-	isAssigned bool
+	Val        rune
+	IsAssigned bool
 }
 
 // RuneOf makes a non-nil value with given rune.
 func RuneOf(val rune) *Rune {
-	return &Rune{val: val, isAssigned: true}
+	return &Rune{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Rune as YAML.
 // This method used on marshaling YAML internally.
 func (v *Rune) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Rune) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

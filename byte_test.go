@@ -28,5 +28,5 @@ func TestByte(t *testing.T) {
 	var got Byte
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Byte{val: given, isAssigned: true}, got)
+	assert.Equal(t, Byte{Val: given, IsAssigned: true}, got)
 }

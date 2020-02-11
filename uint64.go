@@ -4,20 +4,20 @@ package yamlnillable
 
 // Uint64 is a data type for nillable uint64 value for YAML marshaling/unmarshaling.
 type Uint64 struct {
-	val        uint64
-	isAssigned bool
+	Val        uint64
+	IsAssigned bool
 }
 
 // Uint64Of makes a non-nil value with given uint64.
 func Uint64Of(val uint64) *Uint64 {
-	return &Uint64{val: val, isAssigned: true}
+	return &Uint64{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Uint64 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Uint64) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Uint64) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

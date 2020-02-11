@@ -28,5 +28,5 @@ func TestFloat64(t *testing.T) {
 	var got Float64
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Float64{val: given, isAssigned: true}, got)
+	assert.Equal(t, Float64{Val: given, IsAssigned: true}, got)
 }

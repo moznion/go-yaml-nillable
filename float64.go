@@ -4,20 +4,20 @@ package yamlnillable
 
 // Float64 is a data type for nillable float64 value for YAML marshaling/unmarshaling.
 type Float64 struct {
-	val        float64
-	isAssigned bool
+	Val        float64
+	IsAssigned bool
 }
 
 // Float64Of makes a non-nil value with given float64.
 func Float64Of(val float64) *Float64 {
-	return &Float64{val: val, isAssigned: true}
+	return &Float64{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Float64 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Float64) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Float64) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

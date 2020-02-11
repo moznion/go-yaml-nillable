@@ -28,5 +28,5 @@ func TestInt16(t *testing.T) {
 	var got Int16
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Int16{val: given, isAssigned: true}, got)
+	assert.Equal(t, Int16{Val: given, IsAssigned: true}, got)
 }

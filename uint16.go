@@ -4,20 +4,20 @@ package yamlnillable
 
 // Uint16 is a data type for nillable uint16 value for YAML marshaling/unmarshaling.
 type Uint16 struct {
-	val        uint16
-	isAssigned bool
+	Val        uint16
+	IsAssigned bool
 }
 
 // Uint16Of makes a non-nil value with given uint16.
 func Uint16Of(val uint16) *Uint16 {
-	return &Uint16{val: val, isAssigned: true}
+	return &Uint16{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Uint16 as YAML.
 // This method used on marshaling YAML internally.
 func (v *Uint16) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Uint16) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

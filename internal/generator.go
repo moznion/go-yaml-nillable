@@ -28,18 +28,20 @@ func main() {
 		"float32": "Float32",
 		"float64": "Float64",
 	}
+	valAttributeName := "Val"
+	assignedAttributeName := "IsAssigned"
 
 	for typeName, structName := range typeName2StructName {
 		structureComment := g.NewCommentf(" %s is a data type for nillable %s value for YAML marshaling/unmarshaling.", structName, typeName)
 		structure := g.NewStruct(structName).
-			AddField("val", typeName).
-			AddField("isAssigned", "bool")
+			AddField(valAttributeName, typeName).
+			AddField(assignedAttributeName, "bool")
 
 		factoryMethodComment := g.NewCommentf(" %sOf makes a non-nil value with given %s.", structName, typeName)
 		factoryMethodSignature := g.NewFuncSignature(fmt.Sprintf("%sOf", structName)).
 			AddParameters(g.NewFuncParameter("val", typeName)).
 			AddReturnTypes("*" + structName)
-		factoryMethodReturnStmt := g.NewReturnStatement(fmt.Sprintf("&%s{val: val, isAssigned: true}", structName))
+		factoryMethodReturnStmt := g.NewReturnStatement(fmt.Sprintf("&%s{%s: val, %s: true}", structName, valAttributeName, assignedAttributeName))
 		factoryMethod := g.NewFunc(nil, factoryMethodSignature, factoryMethodReturnStmt)
 
 		marshalingMethodComment := g.NewRoot(
@@ -49,7 +51,7 @@ func main() {
 		marshalingMethodSignature := g.NewFuncSignature("MarshalYAML").
 			ReturnTypes("interface{}", "error")
 		marshalingMethodBody := g.NewRoot(
-			g.NewIf("v.isAssigned", g.NewReturnStatement("v.val", "nil")),
+			g.NewIf("v."+assignedAttributeName, g.NewReturnStatement("v."+valAttributeName, "nil")),
 			g.NewReturnStatement("nil", "nil"),
 		)
 		marshalingMethod := g.NewFunc(g.NewFuncReceiver("v", "*"+structName), marshalingMethodSignature, marshalingMethodBody)
@@ -64,8 +66,8 @@ func main() {
 		unmarshalingMethodBody := g.NewRoot(
 			g.NewRawStatementf("var val %s", typeName),
 			g.NewIf("err := unmarshal(&val); err != nil", g.NewReturnStatement("err")),
-			g.NewRawStatement("v.val = val"),
-			g.NewRawStatement("v.isAssigned = true"),
+			g.NewRawStatementf("v.%s = val", valAttributeName),
+			g.NewRawStatementf("v.%s = true", assignedAttributeName),
 			g.NewReturnStatement("nil"),
 		)
 		unmarshalingMethod := g.NewFunc(g.NewFuncReceiver("v", "*"+structName), unmarshalingMethodSignature, unmarshalingMethodBody)

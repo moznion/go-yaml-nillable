@@ -28,5 +28,5 @@ func TestFloat32(t *testing.T) {
 	var got Float32
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Float32{val: given, isAssigned: true}, got)
+	assert.Equal(t, Float32{Val: given, IsAssigned: true}, got)
 }

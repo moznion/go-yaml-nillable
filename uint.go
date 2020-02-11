@@ -4,20 +4,20 @@ package yamlnillable
 
 // Uint is a data type for nillable uint value for YAML marshaling/unmarshaling.
 type Uint struct {
-	val        uint
-	isAssigned bool
+	Val        uint
+	IsAssigned bool
 }
 
 // UintOf makes a non-nil value with given uint.
 func UintOf(val uint) *Uint {
-	return &Uint{val: val, isAssigned: true}
+	return &Uint{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Uint as YAML.
 // This method used on marshaling YAML internally.
 func (v *Uint) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Uint) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }

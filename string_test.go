@@ -28,5 +28,5 @@ func TestString(t *testing.T) {
 	var got String
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, String{val: given, isAssigned: true}, got)
+	assert.Equal(t, String{Val: given, IsAssigned: true}, got)
 }

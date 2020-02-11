@@ -28,5 +28,5 @@ func TestRune(t *testing.T) {
 	var got Rune
 	err = yaml.Unmarshal(marshal, &got)
 	assert.NoError(t, err)
-	assert.Equal(t, Rune{val: given, isAssigned: true}, got)
+	assert.Equal(t, Rune{Val: given, IsAssigned: true}, got)
 }

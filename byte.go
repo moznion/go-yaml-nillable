@@ -4,20 +4,20 @@ package yamlnillable
 
 // Byte is a data type for nillable byte value for YAML marshaling/unmarshaling.
 type Byte struct {
-	val        byte
-	isAssigned bool
+	Val        byte
+	IsAssigned bool
 }
 
 // ByteOf makes a non-nil value with given byte.
 func ByteOf(val byte) *Byte {
-	return &Byte{val: val, isAssigned: true}
+	return &Byte{Val: val, IsAssigned: true}
 }
 
 // MarshalYAML marshals Byte as YAML.
 // This method used on marshaling YAML internally.
 func (v *Byte) MarshalYAML() (interface{}, error) {
-	if v.isAssigned {
-		return v.val, nil
+	if v.IsAssigned {
+		return v.Val, nil
 	}
 	return nil, nil
 }
@@ -29,7 +29,7 @@ func (v *Byte) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	if err := unmarshal(&val); err != nil {
 		return err
 	}
-	v.val = val
-	v.isAssigned = true
+	v.Val = val
+	v.IsAssigned = true
 	return nil
 }
