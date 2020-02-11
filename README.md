@@ -44,7 +44,7 @@ func main() {
 	}
 
 	fmt.Printf("%s", marshal)
-	// output: 12345
+	// output: null
 }
 ```
 
