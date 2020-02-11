@@ -1,4 +1,4 @@
-# go-yaml-nillable
+# go-yaml-nillable [![Actions Status](https://github.com/moznion/go-yaml-nillable/workflows/Go/badge.svg)](https://github.com/moznion/go-yaml-nillable/actions) [![GoDoc](https://godoc.org/github.com/moznion/go-yaml-nillable?status.svg)](https://godoc.org/github.com/moznion/go-yaml-nillable) [![Go Report Card](https://goreportcard.com/badge/github.com/moznion/go-yaml-nillable)](https://goreportcard.com/report/github.com/moznion/go-yaml-nillable)
 
 A library that provides nillable basic types for YAML marshaling and unmarshaling for golang.
 
@@ -50,22 +50,22 @@ func main() {
 
 ## Supported types
 
-- `bool` => `yamlnillable.Bool`
-- `string` => `yamlnillable.String`
-- `int` => `yamlnillable.Int`
-- `int8` => `yamlnillable.Int8`
-- `int16` => `yamlnillable.Int16`
-- `int32` => `yamlnillable.Int32`
-- `int64` => `yamlnillable.Int64`
-- `uint` => `yamlnillable.Uint`
-- `uint8` => `yamlnillable.Uint8`
-- `uint16` => `yamlnillable.Uint16`
-- `uint32` => `yamlnillable.Uint32`
-- `uint64` => `yamlnillable.Uint64`
-- `byte` => `yamlnillable.Byte`
-- `rune` => `yamlnillable.Rune`
-- `float32` => `yamlnillable.Float32`
-- `float64` => `yamlnillable.Float64`
+- `bool` => [yamlnillable.Bool](https://godoc.org/github.com/moznion/go-yaml-nillable#Bool)
+- `string` => [yamlnillable.String](https://godoc.org/github.com/moznion/go-yaml-nillable#String)
+- `int` => [yamlnillable.Int](https://godoc.org/github.com/moznion/go-yaml-nillable#Int)
+- `int8` => [yamlnillable.Int8](https://godoc.org/github.com/moznion/go-yaml-nillable#Int8)
+- `int16` => [yamlnillable.Int16](https://godoc.org/github.com/moznion/go-yaml-nillable#Int16)
+- `int32` => [yamlnillable.Int32](https://godoc.org/github.com/moznion/go-yaml-nillable#Int32)
+- `int64` => [yamlnillable.Int64](https://godoc.org/github.com/moznion/go-yaml-nillable#Int64)
+- `uint` => [yamlnillable.Uint](https://godoc.org/github.com/moznion/go-yaml-nillable#Uint)
+- `uint8` => [yamlnillable.Uint8](https://godoc.org/github.com/moznion/go-yaml-nillable#Uint8)
+- `uint16` => [yamlnillable.Uint16](https://godoc.org/github.com/moznion/go-yaml-nillable#Uint16)
+- `uint32` => [yamlnillable.Uint32](https://godoc.org/github.com/moznion/go-yaml-nillable#Uint32)
+- `uint64` => [yamlnillable.Uint64](https://godoc.org/github.com/moznion/go-yaml-nillable#Uint64)
+- `byte` => [yamlnillable.Byte](https://godoc.org/github.com/moznion/go-yaml-nillable#Byte)
+- `rune` => [yamlnillable.Rune](https://godoc.org/github.com/moznion/go-yaml-nillable#Rune)
+- `float32` => [yamlnillable.Float32](https://godoc.org/github.com/moznion/go-yaml-nillable#Float32)
+- `float64` => [yamlnillable.Float64](https://godoc.org/github.com/moznion/go-yaml-nillable#Float64)
 
 ## Author
 
